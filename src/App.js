@@ -17,7 +17,6 @@ const { zombieHelperAddress, zombieFactoryAddress } = addresses;
 import { default as contract } from 'truffle-contract'
 import zombiefactory_artifacts from '../build/contracts/ZombieFactory.json'
 import zombiehelper_artifacts from '../build/contracts/ZombieHelper.json'
-import NameForm from './form.js'
 
 class App extends Component {
 
@@ -165,15 +164,6 @@ class App extends Component {
     })
   }
 
-  handleChange(event) {
-    this.setState({formValue: event.target.value});
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    this.createZombie(this.state.formValue)
-}
-
   render() {
     // const OnlyAuthLinks = VisibleOnlyAuth(() =>
     //   <span>
@@ -200,8 +190,6 @@ class App extends Component {
     return (
       <div className="App">
 
-        <button onClick={this.createRandomZombie}>Create Zombie</button>
-        <NameForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} value={this.state.value}/>
         <main className="container">
           <div className="pure-g">
             <div className="pure-u-1-1">

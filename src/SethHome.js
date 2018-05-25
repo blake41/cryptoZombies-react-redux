@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 // import logo from './logo.svg'
 import './App.css'
+import ZombieForm from "./ZombieForm"
 import SomeComponent from './SomeComponent'
 import LoadZombiesContainer from './LoadZombiesContainer'
 import { creators, selectors } from './statesauce/src/statesauce'
@@ -22,12 +23,23 @@ class App extends Component {
   render () {
     return (
       <div className='App'>
-        <div>
-          {this.props.secondContract && <SomeComponent zombieHelper={this.props.secondContract} user={this.props.defaultAccount}/>}
-        </div>
-        <div>
-          {this.props.secondContract && <LoadZombiesContainer zombieHelper={this.props.secondContract} user={this.props.defaultAccount}/>}
-        </div>
+        {this.props.secondContract ? (
+          <div>
+            <div>
+              <ZombieForm zombieHelper={this.props.secondContract} user={this.props.defaultAccount}/>
+            </div>
+            <div>
+              <SomeComponent zombieHelper={this.props.secondContract} user={this.props.defaultAccount}/>
+            </div>
+            <div>
+              <LoadZombiesContainer zombieHelper={this.props.secondContract} user={this.props.defaultAccount}/>
+            </div>
+          </div>
+        ) : (
+          <div></div>
+        )
+
+        }
       </div>
     )
   }

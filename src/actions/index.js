@@ -5,7 +5,14 @@ import Web3 from 'web3'
 
 export const GET_WEB3 = 'get_web3'
 export const INSTANTIATE_CONTRACT = 'initiate_contract'
+export const CREATE_ZOMBIE = 'create_zombie'
 
+export function createZombie (userAccount, zombieHelperContract, name) {
+  zombieHelperContract.createRandomZombie(name, {gas: 540000, from: userAccount})
+  return {
+    type: CREATE_ZOMBIE
+  }
+}
 export function fetchWeb3() {
 
   let getWeb3 = new Promise(function(resolve, reject) {
