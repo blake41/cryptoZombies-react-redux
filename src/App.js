@@ -18,7 +18,6 @@ import { default as contract } from 'truffle-contract'
 import zombiefactory_artifacts from '../build/contracts/ZombieFactory.json'
 import zombiehelper_artifacts from '../build/contracts/ZombieHelper.json'
 import NameForm from './form.js'
-import Zombie from './zombie.js'
 
 class App extends Component {
 

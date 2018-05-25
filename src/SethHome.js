@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 // import logo from './logo.svg'
 import './App.css'
 import SomeComponent from './SomeComponent'
+import LoadZombiesContainer from './LoadZombiesContainer'
 import { creators, selectors } from './statesauce/src/statesauce'
 import zombiefactory_artifacts from '../build/contracts/ZombieFactory.json'
 import zombiehelper_artifacts from '../build/contracts/ZombieHelper.json'
@@ -10,7 +11,6 @@ class App extends Component {
 
   constructor(props) {
     super(props)
-    this.loadZombies = this.loadZombies.bind(this)
   }
 
   componentDidMount () {
@@ -19,25 +19,15 @@ class App extends Component {
     this.props.initializeSecondContract(zombiehelper_artifacts)
   }
 
-  loadZombies(account) {
-    this.getZombiesByOwner(account).then((ids) => {
-      this.getZombieDetails(ids.map((id)=>{
-        return id.toNumber()
-      }));
-    })
-  }
-
   render () {
     return (
       <div className='App'>
-        <header className='App-header'>
-          <h1 className='App-title'>Welcome to React</h1>
-        </header>
-        {this.props.secondContract && <SomeComponent zombieHelper={this.props.secondContract} user={this.props.defaultAccount}/>}
-        <p className='App-intro'>
-          To get started, edit <code>src/App.js</code> and save to reload.
-          Your default account is {this.props.defaultAccount}
-        </p>
+        <div>
+          {this.props.secondContract && <SomeComponent zombieHelper={this.props.secondContract} user={this.props.defaultAccount}/>}
+        </div>
+        <div>
+          {this.props.secondContract && <LoadZombiesContainer zombieHelper={this.props.secondContract} user={this.props.defaultAccount}/>}
+        </div>
       </div>
     )
   }

@@ -6,12 +6,12 @@ class SomeComponent extends Component {
   // }
 
   componentDidMount() {
-    this.props.zombieHelper.createRandomZombie(name, {gas: 540000, from: this.props.user})
+    // this.props.zombieHelper.createRandomZombie(name, {gas: 540000, from: this.props.user})
   }
 
   render() {
     return(
-      <div>hello</div>
+      <div>i created a random zombie</div>
     )
   }
 }
